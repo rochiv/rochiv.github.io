@@ -13,7 +13,7 @@
 <script src="/assets/js/findOrder.js">
     function calculateOrder() {
         let a = parseInt(document.getElementById('element').value);
-        let n = parseInt(document.getElementById('modulus').value);
+        let n = parseInt(document.getElementById('prime').value);
         let order = findOrder(a, n);
         document.getElementById('result').innerText = 'Order of ' + a + ' under modulo ' + n + ' is ' + order;
     }
