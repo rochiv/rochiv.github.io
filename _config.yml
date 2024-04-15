@@ -1,3 +1,9 @@
 theme: jekyll-theme-minimal
 title: broit's homepage
 description: Bookmark this to keep an eye on my project updates!
+
+navigation:
+  - title: Home
+    url: /
+  - title: Find Order
+    url: /findOrder.html
