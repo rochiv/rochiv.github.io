@@ -1,0 +1,31 @@
+---
+layout: default
+title: Test Page
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Find Order in Finite Field</title>
+</head>
+<body>
+<h1>Order of Element in Finite Field</h1>
+<p>Field (prime) \( p \): <input type="number" id="prime" value="7"></p>
+<p>Element \( g \): <input type="number" id="element" value="3"></p>
+<button onclick="calculateOrder()">Calculate Order</button>
+<p>Order: <span id="order">-</span></p>
+<script src="/assets/js/findOrder.js">
+    function calculateOrder() {
+        const p = parseInt(document.getElementById('prime').value);
+        const element = parseInt(document.getElementById('element').value);
+        try {
+            const order = findOrder(element, p);
+            document.getElementById('order').textContent = order;
+        } catch (error) {
+            document.getElementById('order').textContent = error.message;
+        }
+    }
+</script>
+</body>
+</html>
