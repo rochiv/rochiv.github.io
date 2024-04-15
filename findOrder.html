@@ -17,14 +17,10 @@ title: Test Page
 <p>Order: <span id="order">-</span></p>
 <script src="/assets/js/findOrder.js">
     function calculateOrder() {
-        const p = parseInt(document.getElementById('prime').value);
-        const element = parseInt(document.getElementById('element').value);
-        try {
-            const order = findOrder(element, p);
-            document.getElementById('order').textContent = order;
-        } catch (error) {
-            document.getElementById('order').textContent = error.message;
-        }
+        let a = parseInt(document.getElementById('element').value);
+        let n = parseInt(document.getElementById('modulus').value);
+        let order = findOrder(a, n);
+        document.getElementById('result').innerText = 'Order of ' + a + ' under modulo ' + n + ' is ' + order;
     }
 </script>
 </body>
