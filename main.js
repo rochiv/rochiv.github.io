@@ -1,9 +1,10 @@
-// TODO: Add a table with a chair
+// TODO: Add a chair
 // TODO: Add a bookshelf
 // TODO: Add a chest of drawers under bed
 // TODO: Add a rug
 // TODO: Make the legs of the bed frame square
 // TODO: Push the table to one side of the bed
+// TODO: Add two walls
 
 (function () {
   // Set up the scene, camera, and renderer
@@ -33,6 +34,7 @@
   // Create materials
   const woodMaterial = new THREE.MeshBasicMaterial({ color: 0x8b4513 });
   const mattressMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff });
+  const wallMaterial = new THREE.MeshBasicMaterial({ color: 0xaaaaaa });
 
   // Utility function to add an outline to a mesh
   function addOutline(mesh) {
@@ -51,12 +53,14 @@
     const mattress = createMattress();
     const floor = createFloor();
     const table = createTable();
+    const walls = createWalls();
 
     // Add outlines
     addOutline(bedFrame);
     addOutline(mattress);
     addOutline(floor);
     addOutline(table);
+    walls.forEach(addOutline); // Add outlines to walls
 
     centerCamera();
   }
@@ -120,25 +124,38 @@
     return table;
   }
 
-  // Create the floor
+  // Create the floor using BoxGeometry
   function createFloor() {
-    const floorGeometry = new THREE.PlaneGeometry(8, 8);
+    const floorGeometry = new THREE.BoxGeometry(8, 0.1, 8);
     const floorMaterial = new THREE.MeshBasicMaterial({ color: 0x808080 });
     const floor = new THREE.Mesh(floorGeometry, floorMaterial);
-    floor.rotation.x = -Math.PI / 2; // Rotate to be horizontal
-    floor.position.y = 0; // Position it at the bottom
+    floor.position.y = -0.05; // Position it at the bottom
     scene.add(floor);
     return floor;
   }
 
+  // Create two walls perpendicular to the floor
+  function createWalls() {
+    const wallGeometry = new THREE.BoxGeometry(8, 4, 0.1);
+
+    // Wall 1
+    const wall1 = new THREE.Mesh(wallGeometry, wallMaterial);
+    wall1.position.set(0, 2, -4); // Positioned at the back
+    scene.add(wall1);
+
+    // Wall 2
+    const wall2 = new THREE.Mesh(wallGeometry, wallMaterial);
+    wall2.rotation.y = Math.PI / 2; // Rotate to be perpendicular
+    wall2.position.set(-4, 2, 0); // Positioned to the left
+    scene.add(wall2);
+
+    return [wall1, wall2];
+  }
+
   // Center the camera on the bed
   function centerCamera() {
-    const bedCenter = new THREE.Vector3();
-    const boundingBox = new THREE.Box3().setFromObject(scene);
-    boundingBox.getCenter(bedCenter);
-
-    camera.position.set(bedCenter.x + 2, bedCenter.y + 2, bedCenter.z + 5);
-    controls.target.copy(bedCenter);
+    camera.position.set(6, 6, 6); // Position the camera at the corner opposite the diagonal
+    controls.target.set(0, 2, 0); // Focus on the center of the room
     controls.update();
   }
 
