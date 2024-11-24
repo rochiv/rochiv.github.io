@@ -47,7 +47,7 @@ function ThreeScene() {
 
       // Add directional light
       const dirLight = new THREE.DirectionalLight(0xffffff, 0.8);
-      dirLight.position.set(5, 5, 5);
+      dirLight.position.set(4, 4, 4);
       dirLight.castShadow = true;
       dirLight.shadow.mapSize.width = 1024;
       dirLight.shadow.mapSize.height = 1024;
@@ -68,6 +68,8 @@ function ThreeScene() {
       controls.minDistance = 2;
       controls.maxDistance = 8;
       controls.maxPolarAngle = Math.PI / 2;
+      controls.minAzimuthAngle = 0;
+      controls.maxAzimuthAngle = Math.PI / 2;
 
       // Create enhanced materials
       const woodMaterial = new THREE.MeshStandardMaterial({
@@ -80,8 +82,15 @@ function ThreeScene() {
         roughness: 0.5,
         metalness: 0,
       });
+
+      const floorMaterial = new THREE.MeshStandardMaterial({
+        color: 0x808080,
+        roughness: 0.9,
+        metalness: 0,
+      });
+
       const wallMaterial = new THREE.MeshStandardMaterial({
-        color: 0xaaaaaa,
+        color: 0x808080,
         roughness: 0.9,
         metalness: 0,
       });
@@ -105,13 +114,17 @@ function ThreeScene() {
         const mattress = createMattress();
         const floor = createFloor();
         const table = createTable();
-        createWalls();
+        const wallLeft = createWallLeft();
+        const wallRight = createWallRight();
+        // createWalls();
 
         // Add outlines
         addOutline(bedFrame);
         addOutline(mattress);
         addOutline(floor);
         addOutline(table);
+        addOutline(wallLeft);
+        addOutline(wallRight);
 
         centerCamera();
       }
@@ -188,9 +201,7 @@ function ThreeScene() {
       // Create the floor
       function createFloor() {
         const floorGeometry = new THREE.PlaneGeometry(8, 8);
-        const floorMaterial = new THREE.MeshStandardMaterial({
-          color: 0x808080,
-        });
+
         const floor = new THREE.Mesh(floorGeometry, floorMaterial);
         floor.rotation.x = -Math.PI / 2; // Rotate to be horizontal
         floor.position.y = 0; // Position it at the bottom
@@ -217,9 +228,30 @@ function ThreeScene() {
         scene.add(wall2);
       }
 
+      function createWallLeft() {
+        const wallGeometry = new THREE.PlaneGeometry(8, 8);
+        const wallLeft = new THREE.Mesh(wallGeometry, wallMaterial);
+        wallLeft.rotation.y = Math.PI / 2; // Rotate to be perpendicular
+        wallLeft.position.set(-4, 4, 0); // Positioned to the left
+        wallLeft.receiveShadow = true;
+        scene.add(wallLeft);
+
+        return wallLeft;
+      }
+
+      function createWallRight() {
+        const wallGeometry = new THREE.PlaneGeometry(8, 8);
+        const wallRight = new THREE.Mesh(wallGeometry, wallMaterial);
+        wallRight.position.set(0, 4, -4);
+        wallRight.receiveShadow = true;
+        scene.add(wallRight);
+
+        return wallRight;
+      }
+
       // Center the camera on the bed
       function centerCamera() {
-        camera.position.set(6, 6, 6); // Position the camera at the corner opposite the diagonal
+        camera.position.set(8, 8, 8); // Position the camera at the corner opposite the diagonal
         controls.target.set(0, 2, 0); // Focus on the center of the room
         controls.update();
       }
@@ -233,12 +265,87 @@ function ThreeScene() {
 
       window.addEventListener("resize", onWindowResize);
 
-      // Render the scene
+      // Create custom axes helper
+      function createCustomAxesHelper(size = 10) {
+        const axesGroup = new THREE.Group();
+
+        const createAxis = (color, start, end) => {
+          const material = new THREE.LineBasicMaterial({ color });
+          const points = [start, end];
+          const geometry = new THREE.BufferGeometry().setFromPoints(points);
+          const line = new THREE.Line(geometry, material);
+          axesGroup.add(line);
+        };
+
+        // X axis
+        createAxis(0xff0000, new THREE.Vector3(-size, 0, 0), new THREE.Vector3(size, 0, 0));
+        // Y axis
+        createAxis(0x00ff00, new THREE.Vector3(0, -size, 0), new THREE.Vector3(0, size, 0));
+        // Z axis
+        createAxis(0x0000ff, new THREE.Vector3(0, 0, -size), new THREE.Vector3(0, 0, size));
+
+        // Add unit markers
+        const markerMaterial = new THREE.LineBasicMaterial({ color: 0x888888 });
+        for (let i = -size; i <= size; i++) {
+          if (i !== 0) {
+            // X markers
+            axesGroup.add(new THREE.Line(
+              new THREE.BufferGeometry().setFromPoints([
+                new THREE.Vector3(i, 0.1, 0),
+                new THREE.Vector3(i, -0.1, 0)
+              ]),
+              markerMaterial
+            ));
+            // Y markers
+            axesGroup.add(new THREE.Line(
+              new THREE.BufferGeometry().setFromPoints([
+                new THREE.Vector3(0.1, i, 0),
+                new THREE.Vector3(-0.1, i, 0)
+              ]),
+              markerMaterial
+            ));
+            // Z markers
+            axesGroup.add(new THREE.Line(
+              new THREE.BufferGeometry().setFromPoints([
+                new THREE.Vector3(0, 0.1, i),
+                new THREE.Vector3(0, -0.1, i)
+              ]),
+              markerMaterial
+            ));
+          }
+        }
+
+        return axesGroup;
+      }
+
+      const customAxesHelper = createCustomAxesHelper(5);
+      scene.add(customAxesHelper);
+
+      // Display angles in radians
+      const angleDisplay = document.createElement('div');
+      angleDisplay.style.position = 'absolute';
+      angleDisplay.style.bottom = '10px';
+      angleDisplay.style.left = '10px';
+      angleDisplay.style.color = 'white';
+      angleDisplay.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+      angleDisplay.style.padding = '5px';
+      angleDisplay.style.fontFamily = 'monospace';
+      angleDisplay.style.fontSize = '12px';
+      document.body.appendChild(angleDisplay);
+
+      function updateAngleDisplay() {
+        const azimuthAngle = controls.getAzimuthalAngle().toFixed(2);
+        const polarAngle = controls.getPolarAngle().toFixed(2);
+        angleDisplay.innerHTML = `Azimuth Angle: ${azimuthAngle} rad<br>Polar Angle: ${polarAngle} rad`;
+      }
+
+      // Update the angle display on each frame
       function animate() {
         requestAnimationFrame(animate);
         controls.update();
         stats.update();
         renderer.render(scene, camera);
+        updateAngleDisplay();
       }
 
       // Initialize and start animation
