@@ -46,7 +46,10 @@ This is a 3D model of a bunk bed that I'm designing to eventually showcase my po
 
 To run the project locally:
 
-1. **Start the Development Server**:
+1. **Navigate to the Project Directory**:
+   Make sure you are in the root directory of the project, which is `rochiv.github.io`.
+
+2. **Start the Development Server**:
    ```bash
    npm start
    ```
