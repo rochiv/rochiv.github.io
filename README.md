@@ -2,18 +2,25 @@
 
 ## Description
 
-This is a 3D model of a bunk bed that I'm designing to eventually showcase my portfolio. It's made with Three.js and React.
+This is a 3D model of a bunk bed that I'm designing to eventually showcase fun code. It's made with Three.js and React.
 
 ## Table of Contents
 
-- [Description](#description)
-- [Technologies Used](#technologies-used)
-- [Features](#features)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Deployment](#deployment)
-- [Available Scripts](#available-scripts)
-- [Learn More](#learn-more)
+- [Broit's Bunk Bed](#broits-bunk-bed)
+  - [Description](#description)
+  - [Table of Contents](#table-of-contents)
+  - [Technologies Used](#technologies-used)
+  - [Features](#features)
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [Deployment](#deployment)
+  - [Available Scripts](#available-scripts)
+    - [`npm start`](#npm-start)
+    - [`npm test`](#npm-test)
+    - [`npm run build`](#npm-run-build)
+    - [`npm run deploy`](#npm-run-deploy)
+    - [`npm run eject`](#npm-run-eject)
+  - [Learn More](#learn-more)
 
 ## Technologies Used
 
@@ -37,9 +44,38 @@ This is a 3D model of a bunk bed that I'm designing to eventually showcase my po
    cd rochiv.github.io
    ```
 
+   If you already have Node.js and npm installed, you can skip to **Install Project Dependencies** (step 3).
+
 2. **Install Dependencies**:
+   
+   If you don't have Node.js and npm installed, follow these steps:
+
+   a. First, install Node Version Manager (nvm):
+   ```bash
+   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+   ```
+   
+   b. Restart your terminal, then install Node.js and npm:
+   ```bash
+   nvm install node # Installs the latest version
+   nvm use node     # Uses the installed version
+   ```
+
+   c. Verify the installation:
+   ```bash
+   node --version
+   npm --version
+   ```
+
+   d. If you plan to develop React applications, install Create React App globally:
+   ```bash
+   npm install -g create-react-app
+   ```
+
+3. **Install Project Dependencies**:
    ```bash
    npm install
+   npm install --save three  # Install Three.js
    ```
 
 ## Usage
