@@ -14,7 +14,7 @@ function ThreeScene() {
 
       // Set up the scene, camera, and renderer
       const scene = new THREE.Scene();
-      scene.background = new THREE.Color(0x000000);
+      scene.background = new THREE.Color(0x663399);
 
       const camera = new THREE.PerspectiveCamera(
         75,
@@ -65,8 +65,8 @@ function ThreeScene() {
       controls.enableDamping = true;
       controls.dampingFactor = 0.25;
       controls.enableZoom = true;
-      controls.minDistance = 2;
-      controls.maxDistance = 8;
+      controls.minDistance = 4;
+      controls.maxDistance = 16;
       controls.maxPolarAngle = Math.PI / 2;
       controls.minAzimuthAngle = 0;
       controls.maxAzimuthAngle = Math.PI / 2;
@@ -256,11 +256,11 @@ function ThreeScene() {
       }
 
       /**
-       * Centers the camera on the bed.
+       * Centers the camera initially.
        */
       function centerCamera() {
-        camera.position.set(8, 8, 8); // Position the camera at the corner opposite the diagonal
-        controls.target.set(0, 2, 0); // Focus on the center of the room
+        camera.position.set(8, 8, 8); // Initial camera position
+        controls.target.set(0, 0, 0);
         controls.update();
       }
 
@@ -275,83 +275,6 @@ function ThreeScene() {
 
       window.addEventListener("resize", onWindowResize);
 
-      /**
-       * Creates a custom axes helper for the scene.
-       * @param {number} [size=10] - The size of the axes.
-       * @returns {THREE.Group} The axes helper group.
-       */
-      function createCustomAxesHelper(size = 10) {
-        const axesGroup = new THREE.Group();
-
-        const createAxis = (color, start, end) => {
-          const material = new THREE.LineBasicMaterial({ color });
-          const points = [start, end];
-          const geometry = new THREE.BufferGeometry().setFromPoints(points);
-          const line = new THREE.Line(geometry, material);
-          axesGroup.add(line);
-        };
-
-        // X axis
-        createAxis(
-          0xff0000,
-          new THREE.Vector3(-size, 0, 0),
-          new THREE.Vector3(size, 0, 0)
-        );
-        // Y axis
-        createAxis(
-          0x00ff00,
-          new THREE.Vector3(0, -size, 0),
-          new THREE.Vector3(0, size, 0)
-        );
-        // Z axis
-        createAxis(
-          0x0000ff,
-          new THREE.Vector3(0, 0, -size),
-          new THREE.Vector3(0, 0, size)
-        );
-
-        // Add unit markers
-        const markerMaterial = new THREE.LineBasicMaterial({ color: 0x888888 });
-        for (let i = -size; i <= size; i++) {
-          if (i !== 0) {
-            // X markers
-            axesGroup.add(
-              new THREE.Line(
-                new THREE.BufferGeometry().setFromPoints([
-                  new THREE.Vector3(i, 0.1, 0),
-                  new THREE.Vector3(i, -0.1, 0),
-                ]),
-                markerMaterial
-              )
-            );
-            // Y markers
-            axesGroup.add(
-              new THREE.Line(
-                new THREE.BufferGeometry().setFromPoints([
-                  new THREE.Vector3(0.1, i, 0),
-                  new THREE.Vector3(-0.1, i, 0),
-                ]),
-                markerMaterial
-              )
-            );
-            // Z markers
-            axesGroup.add(
-              new THREE.Line(
-                new THREE.BufferGeometry().setFromPoints([
-                  new THREE.Vector3(0, 0.1, i),
-                  new THREE.Vector3(0, -0.1, i),
-                ]),
-                markerMaterial
-              )
-            );
-          }
-        }
-
-        return axesGroup;
-      }
-
-      const customAxesHelper = createCustomAxesHelper(5);
-      scene.add(customAxesHelper);
 
       // Display angles in radians
       const angleDisplay = document.createElement("div");
@@ -369,9 +292,12 @@ function ThreeScene() {
        * Updates the angle display with the current azimuth and polar angles.
        */
       function updateAngleDisplay() {
-        const azimuthAngle = controls.getAzimuthalAngle().toFixed(2);
-        const polarAngle = controls.getPolarAngle().toFixed(2);
-        angleDisplay.innerHTML = `Azimuth Angle: ${azimuthAngle} rad<br>Polar Angle: ${polarAngle} rad`;
+        const azimuthAngleRad = controls.getAzimuthalAngle();
+        const polarAngleRad = controls.getPolarAngle();
+        const azimuthAngleDeg = THREE.MathUtils.radToDeg(azimuthAngleRad);
+        const polarAngleDeg = THREE.MathUtils.radToDeg(polarAngleRad);
+
+        angleDisplay.innerHTML = `Azimuth Angle: ${azimuthAngleRad.toFixed(2)} rad (${azimuthAngleDeg.toFixed(2)}°)<br>Polar Angle: ${polarAngleRad.toFixed(2)} rad (${polarAngleDeg.toFixed(2)}°)`;
       }
 
       /**
