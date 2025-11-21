@@ -14,21 +14,25 @@ export const setupContact = (element: HTMLElement) => {
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                         <label for="firstName" class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2 font-serif">First Name</label>
+                        <!-- TODO: Increase font size of First Name input field (currently text-sm) -->
                         <input type="text" id="firstName" name="firstName" required class="w-full px-4 py-3 rounded-lg bg-slate-50 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-600 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all dark:text-white font-mono text-sm">
                     </div>
                     <div>
                         <label for="lastName" class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2 font-serif">Last Name</label>
+                        <!-- TODO: Increase font size of Last Name input field (currently text-sm) -->
                         <input type="text" id="lastName" name="lastName" required class="w-full px-4 py-3 rounded-lg bg-slate-50 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-600 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all dark:text-white font-mono text-sm">
                     </div>
                 </div>
                 
                 <div>
                     <label for="email" class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2 font-serif">Email</label>
+                    <!-- TODO: Increase font size of Email input field (currently text-sm) -->
                     <input type="email" id="email" name="email" required class="w-full px-4 py-3 rounded-lg bg-slate-50 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-600 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all dark:text-white font-mono text-sm">
                 </div>
 
                 <div>
                     <label for="message" class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2 font-serif">Message</label>
+                    <!-- TODO: Increase font size of Message textarea field (currently text-sm) -->
                     <textarea id="message" name="message" rows="5" required class="w-full px-4 py-3 rounded-lg bg-slate-50 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-600 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all dark:text-white font-mono text-sm resize-none"></textarea>
                 </div>
 

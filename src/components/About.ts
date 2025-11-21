@@ -18,8 +18,9 @@ export const setupAbout = (element: HTMLElement) => {
             I specialize in building scalable machine learning models, generative AI pipelines, and robust data engineering architectures.
           </p>
           <p>
-            I thrive on complex challenges. Whether architecting production AI systems or crafting intuitive user interfaces, I bring analytical rigor and creative problem-solving to every project.
+            I enjoy researching and collaborating on interesting projects with opportunities to learn. Please feel free to reach out to me if you have any interesting projects or collaborations in mind. 
           </p>
+          <!-- TODO: Add Contact button here -->
         </div>
 
         <!-- Skills -->
