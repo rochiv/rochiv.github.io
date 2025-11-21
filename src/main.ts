@@ -1,7 +1,7 @@
 import { setupHeader } from './components/Header'
 import { setupHero } from './components/Hero'
 import { setupAbout } from './components/About'
-import { setupProjects } from './components/Projects'
+// import { setupProjects } from './components/Projects'
 import { setupContact } from './components/Contact'
 import { setupFooter } from './components/Footer'
 import './style.css'
@@ -26,6 +26,6 @@ main.append(heroSection, aboutSection, projectsSection, contactSection)
 
 setupHero(heroSection)
 setupAbout(aboutSection)
-setupProjects(projectsSection)
+// setupProjects(projectsSection)
 setupContact(contactSection)
 setupFooter(document.querySelector<HTMLElement>('#footer')!)
