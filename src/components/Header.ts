@@ -22,7 +22,7 @@ export const setupHeader = (element: HTMLElement) => {
                 Resume
             </a> -->
 
-             <button id="theme-toggle" class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors text-xl" aria-label="Toggle Dark Mode">
+             <button id="theme-toggle" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors text-xl" aria-label="Toggle Dark Mode">
               <span id="theme-icon">🌙</span>
             </button>
           </div>
@@ -49,33 +49,41 @@ export const setupHeader = (element: HTMLElement) => {
         </div>
       </div>
     </nav>
-  `
+  `;
 
   // Logic
-  const themeToggle = element.querySelector('#theme-toggle') as HTMLButtonElement
-  const themeIcon = element.querySelector('#theme-icon') as HTMLSpanElement
-  const mobileMenuBtn = element.querySelector('#mobile-menu-btn') as HTMLButtonElement
-  const mobileMenu = element.querySelector('#mobile-menu') as HTMLDivElement
+  const themeToggle = element.querySelector(
+    "#theme-toggle"
+  ) as HTMLButtonElement;
+  const themeIcon = element.querySelector("#theme-icon") as HTMLSpanElement;
+  const mobileMenuBtn = element.querySelector(
+    "#mobile-menu-btn"
+  ) as HTMLButtonElement;
+  const mobileMenu = element.querySelector("#mobile-menu") as HTMLDivElement;
 
-  const isDark = () => document.documentElement.classList.contains('dark')
+  const isDark = () => document.documentElement.classList.contains("dark");
   const updateIcon = () => {
-    themeIcon.textContent = isDark() ? '☀️' : '🌙'
-  }
-  
-  if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-    document.documentElement.classList.add('dark')
+    themeIcon.textContent = isDark() ? "☀️" : "🌙";
+  };
+
+  if (
+    localStorage.theme === "dark" ||
+    (!("theme" in localStorage) &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches)
+  ) {
+    document.documentElement.classList.add("dark");
   } else {
-    document.documentElement.classList.remove('dark')
+    document.documentElement.classList.remove("dark");
   }
-  updateIcon()
+  updateIcon();
 
-  themeToggle.addEventListener('click', () => {
-    document.documentElement.classList.toggle('dark')
-    localStorage.theme = isDark() ? 'dark' : 'light'
-    updateIcon()
-  })
+  themeToggle.addEventListener("click", () => {
+    document.documentElement.classList.toggle("dark");
+    localStorage.theme = isDark() ? "dark" : "light";
+    updateIcon();
+  });
 
-  mobileMenuBtn.addEventListener('click', () => {
-    mobileMenu.classList.toggle('hidden')
-  })
-}
+  mobileMenuBtn.addEventListener("click", () => {
+    mobileMenu.classList.toggle("hidden");
+  });
+};

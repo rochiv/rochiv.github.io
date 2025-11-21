@@ -65,5 +65,5 @@ export const setupAbout = (element: HTMLElement) => {
         </div>
       </div>
     </div>
-  `
-}
+  `;
+};

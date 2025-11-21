@@ -2,24 +2,27 @@ export const setupProjects = (element: HTMLElement) => {
   // Placeholder projects (Generic)
   const projects = [
     {
-      title: 'Neural Network Architecture',
-      description: 'A custom implementation of transformer attention mechanisms for processing sequential data efficiently.',
-      tags: ['Python', 'PyTorch', 'Mathematics'],
-      link: '#'
+      title: "Neural Network Architecture",
+      description:
+        "A custom implementation of transformer attention mechanisms for processing sequential data efficiently.",
+      tags: ["Python", "PyTorch", "Mathematics"],
+      link: "#",
     },
     {
-      title: 'Distributed Data Pipeline',
-      description: 'Scalable ETL framework designed to process terabytes of unstructured data with low latency.',
-      tags: ['AWS', 'Apache Spark', 'Scala'],
-      link: '#'
+      title: "Distributed Data Pipeline",
+      description:
+        "Scalable ETL framework designed to process terabytes of unstructured data with low latency.",
+      tags: ["AWS", "Apache Spark", "Scala"],
+      link: "#",
     },
     {
-      title: 'Generative AI Assistant',
-      description: 'Interactive agent leveraging large language models to assist with code generation and refactoring.',
-      tags: ['LLM', 'TypeScript', 'React'],
-      link: '#'
-    }
-  ]
+      title: "Generative AI Assistant",
+      description:
+        "Interactive agent leveraging large language models to assist with code generation and refactoring.",
+      tags: ["LLM", "TypeScript", "React"],
+      link: "#",
+    },
+  ];
 
   element.innerHTML = `
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
@@ -29,7 +32,9 @@ export const setupProjects = (element: HTMLElement) => {
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mb-20">
-        ${projects.map((project, index) => `
+        ${projects
+          .map(
+            (project, index) => `
           <div class="group bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-slate-100 dark:border-slate-700 flex flex-col h-full">
             
             <!-- Simple visual header -->
@@ -47,16 +52,22 @@ export const setupProjects = (element: HTMLElement) => {
 
               <div class="pt-6 border-t border-slate-100 dark:border-slate-700">
                 <div class="flex flex-wrap gap-2">
-                    ${project.tags.map(tag => `
+                    ${project.tags
+                      .map(
+                        (tag) => `
                     <span class="px-3 py-1 bg-slate-50 dark:bg-slate-700/50 text-slate-600 dark:text-slate-300 text-xs font-mono rounded-md border border-slate-200 dark:border-slate-600">
                         ${tag}
                     </span>
-                    `).join('')}
+                    `
+                      )
+                      .join("")}
                 </div>
               </div>
             </div>
           </div>
-        `).join('')}
+        `
+          )
+          .join("")}
       </div>
       
       <div class="text-center">
@@ -66,5 +77,5 @@ export const setupProjects = (element: HTMLElement) => {
           </a>
       </div>
     </div>
-  `
-}
+  `;
+};

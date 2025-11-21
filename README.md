@@ -1,6 +1,6 @@
 # Portfolio Website
 
-A portfolio website built with **Vite**, **TypeScript**, and **Tailwind CSS**. 
+A portfolio website built with **Vite**, **TypeScript**, and **Tailwind CSS**.
 
 **Live Site:** [rochiv.github.io](https://rochiv.github.io)
 
@@ -49,6 +49,7 @@ rochiv.github.io/
 ### Installation
 
 1. **Clone the repository:**
+
    ```bash
    git clone https://github.com/rochiv/rochiv.github.io.git
    cd rochiv.github.io
@@ -108,11 +109,11 @@ Content is modularized in `src/components/`:
 2. Export a `setupNewSection` function that takes an `HTMLElement`
 3. Import and call it in `src/main.ts`:
    ```typescript
-   import { setupNewSection } from './components/NewSection'
-   const newSection = document.createElement('section')
-   newSection.id = 'new-section'
-   main.append(newSection)
-   setupNewSection(newSection)
+   import { setupNewSection } from "./components/NewSection";
+   const newSection = document.createElement("section");
+   newSection.id = "new-section";
+   main.append(newSection);
+   setupNewSection(newSection);
    ```
 
 ### Code Style

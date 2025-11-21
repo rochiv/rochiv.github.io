@@ -1,3 +1,3 @@
 export const setupFooter = (element: HTMLElement) => {
-  element.innerHTML = ``
-}
+  element.innerHTML = ``;
+};

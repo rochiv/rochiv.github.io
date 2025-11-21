@@ -12,6 +12,7 @@ export const setupHero = (element: HTMLElement) => {
           Crafting intelligent systems with mathematical precision.
         </p>
         <div class="flex justify-center gap-6 animate-fade-in delay-400 pointer-events-auto">
+          <!-- BUGFIX: "View Work" button translucent in light mode -- needs to be solid -->
           <a href="#projects" class="px-8 py-4 rounded-lg bg-primary text-white font-serif font-bold text-lg hover:bg-primary-dark transition-all shadow-lg hover:shadow-xl hover:-translate-y-1 opacity-100">
             View Work
           </a>
@@ -28,48 +29,52 @@ export const setupHero = (element: HTMLElement) => {
     </div>
   `;
 
-  initLorenzAttractor(element.querySelector('#lorenz-canvas') as HTMLCanvasElement);
+  initLorenzAttractor(
+    element.querySelector("#lorenz-canvas") as HTMLCanvasElement
+  );
 };
 
 function initLorenzAttractor(canvas: HTMLCanvasElement) {
-  const ctx = canvas.getContext('2d')!;
-  let width = canvas.width = window.innerWidth;
-  let height = canvas.height = window.innerHeight;
+  const ctx = canvas.getContext("2d")!;
+  let width = (canvas.width = window.innerWidth);
+  let height = (canvas.height = window.innerHeight);
 
   // Lorenz System Parameters (Classic values)
   const sigma = 10;
   const rho = 28;
-  const beta = 8/3;
+  const beta = 8 / 3;
 
   // Initial state
   let x = 0.1;
   let y = 0;
   let z = 0;
   const dt = 0.01;
-  
+
   // Store points for the loop
-  const points: {x: number, y: number, z: number}[] = [];
+  const points: { x: number; y: number; z: number }[] = [];
   const maxPoints = 2000; // Enough points for a smooth loop
 
   // Pre-calculate a full loop cycle
-  for(let i = 0; i < maxPoints; i++) {
+  for (let i = 0; i < maxPoints; i++) {
     // Actual Lorenz Attractor differential equations
     const dx = sigma * (y - x);
     const dy = x * (rho - z) - y;
     const dz = x * y - beta * z;
-    
+
     x += dx * dt;
     y += dy * dt;
     z += dz * dt;
-    
-    points.push({x, y, z});
+
+    points.push({ x, y, z });
   }
 
   // Rotation angle for smooth rotation
   let rotation = 0;
-  const isDarkMode = () => window.matchMedia('(prefers-color-scheme: dark)').matches || document.documentElement.classList.contains('dark');
+  const isDarkMode = () =>
+    window.matchMedia("(prefers-color-scheme: dark)").matches ||
+    document.documentElement.classList.contains("dark");
 
-  window.addEventListener('resize', () => {
+  window.addEventListener("resize", () => {
     width = canvas.width = window.innerWidth;
     height = canvas.height = window.innerHeight;
   });
@@ -78,57 +83,62 @@ function initLorenzAttractor(canvas: HTMLCanvasElement) {
   const observer = new MutationObserver(() => {
     // Theme changed, will use updated colors in next draw
   });
-  observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+  observer.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ["class"],
+  });
 
   function draw() {
     ctx.clearRect(0, 0, width, height);
-    
+
     ctx.save();
     ctx.translate(width / 2, height / 2);
-    
+
     // Responsive scale
     const scale = Math.min(width, height) / 50;
-    
+
     // Slow continuous rotation
     rotation += 0.003;
     ctx.rotate(rotation);
-    
-    ctx.lineJoin = 'round';
-    ctx.lineCap = 'round';
-    
+
+    ctx.lineJoin = "round";
+    ctx.lineCap = "round";
+
     // Draw the Lorenz attractor loop
     if (points.length > 1) {
       ctx.beginPath();
       ctx.moveTo(points[0].x * scale, points[0].y * scale);
-      
+
       for (let i = 1; i < points.length; i++) {
         ctx.lineTo(points[i].x * scale, points[i].y * scale);
       }
-      
+
       // Different colors for light vs dark mode
       const darkMode = isDarkMode();
       const gradient = ctx.createLinearGradient(
-        -width/3, -height/3,
-        width/3, height/3
+        -width / 3,
+        -height / 3,
+        width / 3,
+        height / 3
       );
-      
+
       if (darkMode) {
         // Brighter, more contrasting colors for dark mode
-        gradient.addColorStop(0, 'rgba(167, 139, 250, 0.9)');  // Violet-400 (brighter)
-        gradient.addColorStop(0.5, 'rgba(251, 191, 36, 0.9)'); // Amber-400 (high contrast)
-        gradient.addColorStop(1, 'rgba(129, 140, 248, 0.9)');  // Indigo-400 (brighter)
+        gradient.addColorStop(0, "rgba(167, 139, 250, 0.9)"); // Violet-400 (brighter)
+        gradient.addColorStop(0.5, "rgba(251, 191, 36, 0.9)"); // Amber-400 (high contrast)
+        gradient.addColorStop(1, "rgba(129, 140, 248, 0.9)"); // Indigo-400 (brighter)
       } else {
         // Original theme colors for light mode
-        gradient.addColorStop(0, 'rgba(139, 92, 246, 0.8)');  // Violet
-        gradient.addColorStop(0.5, 'rgba(190, 18, 60, 0.8)'); // Rose
-        gradient.addColorStop(1, 'rgba(79, 70, 229, 0.8)');   // Indigo
+        gradient.addColorStop(0, "rgba(139, 92, 246, 0.8)"); // Violet
+        gradient.addColorStop(0.5, "rgba(190, 18, 60, 0.8)"); // Rose
+        gradient.addColorStop(1, "rgba(79, 70, 229, 0.8)"); // Indigo
       }
-      
+
       ctx.strokeStyle = gradient;
       ctx.lineWidth = 2.5;
       ctx.stroke();
     }
-    
+
     ctx.restore();
     requestAnimationFrame(draw);
   }

@@ -59,31 +59,39 @@ export const setupContact = (element: HTMLElement) => {
   // Note: This opens the user's email client. For true masking/relay without exposing email in code,
   // you would need a service like Formspree, EmailJS, or a backend. This is the simplest solution
   // for static sites without third-party accounts.
-  const form = element.querySelector('#contact-form') as HTMLFormElement;
-  form.addEventListener('submit', (e) => {
+  const form = element.querySelector("#contact-form") as HTMLFormElement;
+  form.addEventListener("submit", (e) => {
     e.preventDefault();
-    
-    const firstName = (element.querySelector('#firstName') as HTMLInputElement).value.trim();
-    const lastName = (element.querySelector('#lastName') as HTMLInputElement).value.trim();
-    const senderEmail = (element.querySelector('#email') as HTMLInputElement).value.trim();
-    const message = (element.querySelector('#message') as HTMLTextAreaElement).value.trim();
-    
+
+    const firstName = (
+      element.querySelector("#firstName") as HTMLInputElement
+    ).value.trim();
+    const lastName = (
+      element.querySelector("#lastName") as HTMLInputElement
+    ).value.trim();
+    const senderEmail = (
+      element.querySelector("#email") as HTMLInputElement
+    ).value.trim();
+    const message = (
+      element.querySelector("#message") as HTMLTextAreaElement
+    ).value.trim();
+
     if (!firstName || !lastName || !senderEmail || !message) {
-      alert('Please fill in all fields.');
+      alert("Please fill in all fields.");
       return;
     }
-    
+
     const subject = `Portfolio Contact: ${firstName} ${lastName}`;
     const body = `Name: ${firstName} ${lastName}\nEmail: ${senderEmail}\n\nMessage:\n${message}`;
-    
+
     // Open default mail client with pre-filled email
     // The email address will be visible in the mailto link, but this is the standard
     // approach for static sites without backend services
     window.location.href = `mailto:rohitchivukula@proton.me?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    
+
     // Reset form after a brief delay
     setTimeout(() => {
       form.reset();
     }, 100);
   });
-}
+};
