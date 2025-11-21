@@ -16,9 +16,11 @@ export const setupHeader = (element: HTMLElement) => {
             <a href="#projects" class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors">Projects</a>
             <a href="#contact" class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors">Contact</a>
             
-            <a href="resume/resume.pdf" target="_blank" class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors" aria-label="Resume">
+            <!-- TODO: Add resume button once resume.pdf is ready -->
+            <!-- Resume button - commented out until resume is ready -->
+            <!-- <a href="resume/resume.pdf" target="_blank" class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors" aria-label="Resume">
                 Resume
-            </a>
+            </a> -->
 
              <button id="theme-toggle" class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors text-xl" aria-label="Toggle Dark Mode">
               <span id="theme-icon">🌙</span>
@@ -42,7 +44,8 @@ export const setupHeader = (element: HTMLElement) => {
           <a href="#about" class="block py-3 text-slate-700 dark:text-slate-300 hover:text-primary hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg">About</a>
           <a href="#projects" class="block py-3 text-slate-700 dark:text-slate-300 hover:text-primary hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg">Projects</a>
           <a href="#contact" class="block py-3 text-slate-700 dark:text-slate-300 hover:text-primary hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg">Contact</a>
-          <a href="resume/resume.pdf" target="_blank" class="block py-3 text-primary hover:bg-primary/5 rounded-lg">Resume</a>
+          <!-- Resume button - commented out until resume is ready -->
+          <!-- <a href="resume/resume.pdf" target="_blank" class="block py-3 text-primary hover:bg-primary/5 rounded-lg">Resume</a> -->
         </div>
       </div>
     </nav>

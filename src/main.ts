@@ -26,6 +26,7 @@ main.append(heroSection, aboutSection, projectsSection, contactSection)
 
 setupHero(heroSection)
 setupAbout(aboutSection)
+// TODO: Add projects section after cleaning up the placeholder projects section
 // setupProjects(projectsSection)
 setupContact(contactSection)
 setupFooter(document.querySelector<HTMLElement>('#footer')!)
