@@ -1,3 +1,12 @@
+// Import self-hosted fonts
+import "@fontsource/fraunces/300.css";
+import "@fontsource/fraunces/400.css";
+import "@fontsource/fraunces/600.css";
+import "@fontsource/fraunces/700.css";
+import "@fontsource/space-mono/400.css";
+import "@fontsource/space-mono/700.css";
+import "@fontsource/space-mono/400-italic.css";
+
 import { setupHeader } from "./components/Header";
 import { setupHero } from "./components/Hero";
 import { setupAbout } from "./components/About";
