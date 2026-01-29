@@ -1,26 +1,26 @@
 export const setupProjects = (element: HTMLElement) => {
-  // Placeholder projects (Generic)
+  // TODO: Add more projects as needed
   const projects = [
     {
-      title: "Neural Network Architecture",
+      title: "Papers-to-Code",
       description:
-        "A custom implementation of transformer attention mechanisms for processing sequential data efficiently.",
-      tags: ["Python", "PyTorch", "Mathematics"],
-      link: "#",
+        "Research paper implementations including neural weather prediction and medical imaging models.",
+      tags: ["Python", "PyTorch", "JAX"],
+      link: "https://github.com/rochiv/papers-to-code",
     },
     {
-      title: "Distributed Data Pipeline",
+      title: "NASA Lunar Autonomy",
       description:
-        "Scalable ETL framework designed to process terabytes of unstructured data with low latency.",
-      tags: ["AWS", "Apache Spark", "Scala"],
-      link: "#",
+        "Autonomous lunar rover navigation. 5th place nationally among 31 university teams.",
+      tags: ["ROS", "ORB-SLAM3", "Python"],
+      link: "https://github.com/WVU-AIClub/LunarAutonomyChallenge",
     },
     {
-      title: "Generative AI Assistant",
+      title: "Neural Weather Prediction",
       description:
-        "Interactive agent leveraging large language models to assist with code generation and refactoring.",
-      tags: ["LLM", "TypeScript", "React"],
-      link: "#",
+        "Graph neural networks for atmospheric forecasting with GRIB2 data pipelines.",
+      tags: ["PyTorch", "GNN", "HPC"],
+      link: "https://github.com/rochiv/papers-to-code",
     },
   ];
 
@@ -42,7 +42,6 @@ export const setupProjects = (element: HTMLElement) => {
             
             <div class="p-8 flex-1 flex flex-col">
               <div class="mb-6">
-                 <span class="font-mono text-xs font-bold tracking-widest text-slate-400 uppercase mb-2 block">Project 0${index + 1}</span>
                  <h3 class="font-serif text-2xl font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors">${project.title}</h3>
               </div>
               
@@ -50,7 +49,7 @@ export const setupProjects = (element: HTMLElement) => {
                 ${project.description}
               </p>
 
-              <div class="pt-6 border-t border-slate-100 dark:border-slate-700">
+              <div class="pt-6 border-t border-slate-100 dark:border-slate-700 flex justify-between items-center">
                 <div class="flex flex-wrap gap-2">
                     ${project.tags
                       .map(
@@ -62,6 +61,9 @@ export const setupProjects = (element: HTMLElement) => {
                       )
                       .join("")}
                 </div>
+                <a href="${project.link}" target="_blank" class="text-primary hover:text-primary-dark transition-colors font-serif font-bold text-sm">
+                  View
+                </a>
               </div>
             </div>
           </div>

@@ -16,7 +16,7 @@ export const setupFooter = (element: HTMLElement, config: FooterConfig) => {
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex flex-col sm:flex-row justify-between items-center gap-6">
           <p class="text-sm text-slate-500 dark:text-slate-400 font-mono">
-            &copy; ${new Date().getFullYear()} Rohit Chivukula
+            ${new Date().getFullYear()} Rohit Chivukula
           </p>
           <div class="flex items-center gap-6">
             ${crossLink}

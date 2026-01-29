@@ -8,7 +8,7 @@ export const setupHero = (element: HTMLElement) => {
           Rohit Chivukula
         </h1>
         <p class="font-mono text-lg sm:text-xl text-slate-600 dark:text-slate-300 mb-10 max-w-2xl mx-auto leading-relaxed animate-fade-in delay-200">
-          Full-Stack Development Portfolio <br>
+          Machine Learning Engineer | Full-Stack Developer <br>
         </p>
         <div class="flex justify-center gap-6 animate-fade-in delay-400 pointer-events-auto">
           <!-- BUGFIX: "View Work" button translucent in light mode -- needs to be solid -->

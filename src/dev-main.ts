@@ -15,7 +15,7 @@ import { setupHeader } from "./shared/Header";
 import { setupFooter } from "./shared/Footer";
 import { setupHero } from "./dev/Hero";
 import { setupAbout } from "./dev/About";
-// import { setupProjects } from './dev/Projects'
+import { setupProjects } from "./dev/Projects";
 import { setupContact } from "./dev/Contact";
 import "./style.css";
 
@@ -37,8 +37,8 @@ setupHeader(document.querySelector<HTMLElement>("#header")!, {
     { label: "About", href: "#about" },
     { label: "Projects", href: "#projects" },
     { label: "Contact", href: "#contact" },
+    { label: "Research", href: "/" },
   ],
-  ctaLink: { label: "\u2190 Research", href: "/" },
 });
 
 const main = document.querySelector<HTMLElement>("#main")!;
@@ -56,9 +56,6 @@ main.append(heroSection, aboutSection, projectsSection, contactSection);
 
 setupHero(heroSection);
 setupAbout(aboutSection);
-// TODO: Add projects section after cleaning up the placeholder projects section
-// setupProjects(projectsSection)
+setupProjects(projectsSection);
 setupContact(contactSection);
-setupFooter(document.querySelector<HTMLElement>("#footer")!, {
-  crossPageLink: { label: "\u2190 Research Page", href: "/" },
-});
+setupFooter(document.querySelector<HTMLElement>("#footer")!, {});

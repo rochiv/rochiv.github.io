@@ -32,9 +32,8 @@ export const setupContact = (element: HTMLElement) => {
                     <textarea id="message" name="message" rows="5" required class="w-full px-4 py-3 rounded-lg bg-slate-50 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-600 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all dark:text-white font-mono text-base resize-none"></textarea>
                 </div>
 
-                <button type="submit" class="w-full py-4 bg-primary hover:bg-primary-dark text-white font-bold font-serif rounded-xl transition-all shadow-lg hover:shadow-primary/25 flex items-center justify-center gap-2 group">
-                    <span>Send Message</span>
-                    <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                <button type="submit" class="w-full py-4 bg-primary hover:bg-primary-dark text-white font-bold font-serif rounded-xl transition-all shadow-lg hover:shadow-primary/25 ">
+                    Send Message
                 </button>
             </form>
         </div>

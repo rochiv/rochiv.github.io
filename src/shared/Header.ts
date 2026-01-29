@@ -1,6 +1,6 @@
 // NOTE: All innerHTML usage in this file is with static, developer-controlled
 // template strings. No user input or external data is rendered via innerHTML.
-import { initTheme, toggleTheme, isDark } from "./theme";
+import { initTheme, toggleTheme } from "./theme";
 
 export interface NavItem {
   label: string;
@@ -18,7 +18,7 @@ export const setupHeader = (element: HTMLElement, config: HeaderConfig) => {
   const navLinks = config.navItems
     .map(
       (item) =>
-        `<a href="${item.href}" class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors">${item.label}</a>`,
+        `<a href="${item.href}" class="whitespace-nowrap text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors">${item.label}</a>`,
     )
     .join("");
 
@@ -30,7 +30,7 @@ export const setupHeader = (element: HTMLElement, config: HeaderConfig) => {
     .join("");
 
   const ctaHtml = config.ctaLink
-    ? `<a href="${config.ctaLink.href}" class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors">${config.ctaLink.label}</a>`
+    ? `<a href="${config.ctaLink.href}" class="whitespace-nowrap text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors">${config.ctaLink.label}</a>`
     : "";
 
   const mobileCta = config.ctaLink
@@ -48,11 +48,11 @@ export const setupHeader = (element: HTMLElement, config: HeaderConfig) => {
             </a>
           </div>
 
-          <div class="hidden md:flex space-x-12 items-center font-serif font-bold text-lg">
+          <div class="hidden md:flex space-x-4 lg:space-x-8 items-center flex-shrink-0 font-serif font-bold text-base lg:text-lg">
             ${navLinks}
             ${ctaHtml}
-            <button id="theme-toggle" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors text-xl" aria-label="Toggle Dark Mode">
-              <span id="theme-icon">🌙</span>
+            <button id="theme-toggle" class="relative w-14 h-7 bg-slate-300 dark:bg-primary rounded-full transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2" aria-label="Toggle Dark Mode">
+              <span id="theme-icon" class="absolute top-0.5 left-0.5 w-6 h-6 bg-white rounded-full shadow-md transform transition-transform duration-300 dark:translate-x-7"></span>
             </button>
           </div>
 
@@ -70,9 +70,12 @@ export const setupHeader = (element: HTMLElement, config: HeaderConfig) => {
         <div class="px-6 pt-6 pb-8 space-y-4 font-serif text-xl font-bold text-center">
           ${mobileNavLinks}
           ${mobileCta}
-          <button id="mobile-theme-toggle" class="w-full py-3 text-slate-700 dark:text-slate-300 hover:text-primary hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg">
-            <span id="mobile-theme-icon">🌙</span> Toggle Theme
-          </button>
+          <div class="flex items-center justify-center gap-3 py-3">
+            <span class="text-slate-700 dark:text-slate-300">Theme</span>
+            <button id="mobile-theme-toggle" class="relative w-14 h-7 bg-slate-300 dark:bg-primary rounded-full transition-colors duration-300 focus:outline-none" aria-label="Toggle Dark Mode">
+              <span id="mobile-theme-icon" class="absolute top-0.5 left-0.5 w-6 h-6 bg-white rounded-full shadow-md transform transition-transform duration-300 dark:translate-x-7"></span>
+            </button>
+          </div>
         </div>
       </div>
     </nav>
@@ -80,18 +83,8 @@ export const setupHeader = (element: HTMLElement, config: HeaderConfig) => {
 
   initTheme();
 
-  const updateIcons = () => {
-    const icon = isDark() ? "☀️" : "🌙";
-    const themeIcon = element.querySelector("#theme-icon");
-    const mobileThemeIcon = element.querySelector("#mobile-theme-icon");
-    if (themeIcon) themeIcon.textContent = icon;
-    if (mobileThemeIcon) mobileThemeIcon.textContent = icon;
-  };
-  updateIcons();
-
   const handleToggle = () => {
     toggleTheme();
-    updateIcons();
   };
 
   element
