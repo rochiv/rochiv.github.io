@@ -59,22 +59,22 @@ export const setupContact = (element: HTMLElement) => {
   // Note: This opens the user's email client. For true masking/relay without exposing email in code,
   // you would need a service like Formspree, EmailJS, or a backend. This is the simplest solution
   // for static sites without third-party accounts.
-  const form = element.querySelector("#contact-form") as HTMLFormElement;
+  const form = element.querySelector<HTMLFormElement>("#contact-form")!;
   form.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    const firstName = (
-      element.querySelector("#firstName") as HTMLInputElement
-    ).value.trim();
-    const lastName = (
-      element.querySelector("#lastName") as HTMLInputElement
-    ).value.trim();
-    const senderEmail = (
-      element.querySelector("#email") as HTMLInputElement
-    ).value.trim();
-    const message = (
-      element.querySelector("#message") as HTMLTextAreaElement
-    ).value.trim();
+    const firstName = element
+      .querySelector<HTMLInputElement>("#firstName")!
+      .value.trim();
+    const lastName = element
+      .querySelector<HTMLInputElement>("#lastName")!
+      .value.trim();
+    const senderEmail = element
+      .querySelector<HTMLInputElement>("#email")!
+      .value.trim();
+    const message = element
+      .querySelector<HTMLTextAreaElement>("#message")!
+      .value.trim();
 
     if (!firstName || !lastName || !senderEmail || !message) {
       alert("Please fill in all fields.");

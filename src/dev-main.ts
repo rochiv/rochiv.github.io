@@ -1,4 +1,8 @@
-// Import self-hosted fonts
+// NOTE: All innerHTML usage in this file is with static, developer-controlled
+// template strings. No user input or external data is rendered via innerHTML.
+// See CLAUDE.md "Security Considerations" section.
+
+// Dev page fonts
 import "@fontsource/fraunces/300.css";
 import "@fontsource/fraunces/400.css";
 import "@fontsource/fraunces/600.css";
@@ -7,14 +11,17 @@ import "@fontsource/space-mono/400.css";
 import "@fontsource/space-mono/700.css";
 import "@fontsource/space-mono/400-italic.css";
 
-import { setupHeader } from "./components/Header";
-import { setupHero } from "./components/Hero";
-import { setupAbout } from "./components/About";
-// import { setupProjects } from './components/Projects'
-import { setupContact } from "./components/Contact";
-import { setupFooter } from "./components/Footer";
+import { setupHeader } from "./shared/Header";
+import { setupFooter } from "./shared/Footer";
+import { setupHero } from "./dev/Hero";
+import { setupAbout } from "./dev/About";
+// import { setupProjects } from './dev/Projects'
+import { setupContact } from "./dev/Contact";
 import "./style.css";
 
+document.documentElement.setAttribute("data-page", "dev");
+
+// Static developer-controlled template — safe innerHTML usage per CLAUDE.md
 document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
   <div class="min-h-screen bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-mono selection:bg-primary selection:text-white">
      <header id="header"></header>
@@ -23,7 +30,17 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
   </div>
 `;
 
-setupHeader(document.querySelector<HTMLElement>("#header")!);
+setupHeader(document.querySelector<HTMLElement>("#header")!, {
+  logoText: "Rohit Chivukula",
+  logoHref: "#",
+  navItems: [
+    { label: "About", href: "#about" },
+    { label: "Projects", href: "#projects" },
+    { label: "Contact", href: "#contact" },
+  ],
+  ctaLink: { label: "\u2190 Research", href: "/" },
+});
+
 const main = document.querySelector<HTMLElement>("#main")!;
 
 const heroSection = document.createElement("section");
@@ -42,4 +59,6 @@ setupAbout(aboutSection);
 // TODO: Add projects section after cleaning up the placeholder projects section
 // setupProjects(projectsSection)
 setupContact(contactSection);
-setupFooter(document.querySelector<HTMLElement>("#footer")!);
+setupFooter(document.querySelector<HTMLElement>("#footer")!, {
+  crossPageLink: { label: "\u2190 Research Page", href: "/" },
+});

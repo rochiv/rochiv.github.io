@@ -1,25 +1,35 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  content: ["./index.html", "./dev/index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   darkMode: "class",
   theme: {
     extend: {
       fontFamily: {
         serif: ["Fraunces", "serif"],
         mono: ["Space Mono", "monospace"],
-        sans: ["Fraunces", "serif"], // Defaulting sans to serif for that specific campaign feel if needed, or use Space Mono for body
+        sans: ["Fraunces", "serif"],
+        "serif-research": ["Spectral", "Georgia", "serif"],
+        "mono-research": ["JetBrains Mono", "monospace"],
       },
       colors: {
         primary: {
-          DEFAULT: "#8b5cf6", // Violet-500
-          dark: "#7c3aed", // Violet-600
+          DEFAULT: "#8b5cf6",
+          dark: "#7c3aed",
         },
         secondary: {
-          DEFAULT: "#4f46e5", // Indigo-600
+          DEFAULT: "#4f46e5",
         },
         background: {
-          light: "#fdfbf7", // Warm white/cream for nostalgia
-          dark: "#0f172a", // Slate-900
+          light: "#fdfbf7",
+          dark: "#0f172a",
+        },
+        research: {
+          accent: "#2C5F87",
+          "accent-dark": "#1E4263",
+          secondary: "#8B6914",
+          "secondary-dark": "#6B5010",
+          "bg-light": "#FAFAF8",
+          "bg-dark": "#111318",
         },
       },
       animation: {

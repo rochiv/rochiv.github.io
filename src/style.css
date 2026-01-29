@@ -11,6 +11,21 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Page-specific theme variables */
+[data-page="dev"] {
+  --page-accent: #8b5cf6;
+  --page-accent-dark: #7c3aed;
+  --page-bg-light: #fdfbf7;
+  --page-bg-dark: #0f172a;
+}
+
+[data-page="research"] {
+  --page-accent: #2c5f87;
+  --page-accent-dark: #1e4263;
+  --page-bg-light: #fafaf8;
+  --page-bg-dark: #111318;
+}
+
 html {
   scroll-behavior: smooth;
 }

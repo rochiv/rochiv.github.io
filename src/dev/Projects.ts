@@ -58,14 +58,14 @@ export const setupProjects = (element: HTMLElement) => {
                     <span class="px-3 py-1 bg-slate-50 dark:bg-slate-700/50 text-slate-600 dark:text-slate-300 text-xs font-mono rounded-md border border-slate-200 dark:border-slate-600">
                         ${tag}
                     </span>
-                    `
+                    `,
                       )
                       .join("")}
                 </div>
               </div>
             </div>
           </div>
-        `
+        `,
           )
           .join("")}
       </div>
