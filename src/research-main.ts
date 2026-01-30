@@ -22,8 +22,6 @@ import { setupTeaching } from "./research/Teaching";
 import { setupEducation } from "./research/Education";
 import "./style.css";
 
-document.documentElement.setAttribute("data-page", "research");
-
 // Static developer-controlled template — safe innerHTML usage per CLAUDE.md
 document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
   <div class="min-h-screen bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-mono selection:bg-primary selection:text-white">
@@ -78,4 +76,6 @@ setupResearchExperience(experienceSection);
 setupSelectedProjects(projectsSection);
 setupTeaching(teachingSection);
 setupEducation(educationSection);
-setupFooter(document.querySelector<HTMLElement>("#footer")!, {});
+setupFooter(document.querySelector<HTMLElement>("#footer")!, {
+  crossPageLink: { label: "Portfolio", href: "./dev/" },
+});

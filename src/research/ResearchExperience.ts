@@ -13,7 +13,7 @@ export const setupResearchExperience = (element: HTMLElement) => {
             <span class="text-sm text-slate-500 dark:text-slate-400 font-mono">May 2024 - Present</span>
           </div>
           <p class="text-primary dark:text-blue-400 text-sm mb-2">Machine Learning Engineer, Generative AI R&amp;D</p>
-          <p class="leading-relaxed text-sm"><!-- TODO: Add description --> Working on neural weather prediction, RAG pipeline evaluation, and probabilistic forecasting for airframe icing risk.</p>
+          <p class="leading-relaxed text-base"><!-- TODO: Add description --> Working on neural weather prediction, RAG pipeline evaluation, and probabilistic forecasting for airframe icing risk.</p>
         </div>
 
         <div>
@@ -22,7 +22,16 @@ export const setupResearchExperience = (element: HTMLElement) => {
             <span class="text-sm text-slate-500 dark:text-slate-400 font-mono">May 2023 - May 2024</span>
           </div>
           <p class="text-primary dark:text-blue-400 text-sm mb-2">Undergraduate Research Assistant</p>
-          <p class="leading-relaxed text-sm"><!-- TODO: Add description --> Built 3D U-Net models for PET/CT lesion segmentation. Achieved Dice score of 0.691 on AutoPET-II validation. Co-authored multimodal federated learning survey.</p>
+          <p class="leading-relaxed text-base"><!-- TODO: Add description --> Built 3D U-Net models for PET/CT lesion segmentation. Achieved Dice score of 0.691 on AutoPET-II validation. Co-authored multimodal federated learning survey.</p>
+        </div>
+
+        <div>
+          <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-1">
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white">iPacket</h3>
+            <span class="text-sm text-slate-500 dark:text-slate-400 font-mono">May 2022 - Mar 2023</span>
+          </div>
+          <p class="text-primary dark:text-blue-400 text-sm mb-2">Data Analytics Intern</p>
+          <p class="leading-relaxed text-base"><!-- TODO: Add description --></p>
         </div>
 
         <div>
@@ -31,7 +40,7 @@ export const setupResearchExperience = (element: HTMLElement) => {
             <span class="text-sm text-slate-500 dark:text-slate-400 font-mono">Aug 2021 - May 2022</span>
           </div>
           <p class="text-primary dark:text-blue-400 text-sm mb-2">Research Apprentice</p>
-          <p class="leading-relaxed text-sm"><!-- TODO: Add description --> Trained CNN classifiers for power grid anomaly detection. Generated 26,280 synthetic data points via MATPOWER simulations.</p>
+          <p class="leading-relaxed text-base"><!-- TODO: Add description --> Trained CNN classifiers for power grid anomaly detection. Generated 26,280 synthetic data points via MATPOWER simulations.</p>
         </div>
       </div>
     </div>

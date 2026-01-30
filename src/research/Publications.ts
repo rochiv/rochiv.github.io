@@ -13,8 +13,8 @@ export const setupPublications = (element: HTMLElement) => {
             Thrasher, J., Devkota, A., Siwakoti, P., <strong class="text-slate-900 dark:text-white">Chivukula, R.</strong>, Poudel, P., Hu, C., Bhattarai, B., and Gyawali, P. (2025).
             &ldquo;Multimodal Federated Learning in Healthcare: a Review.&rdquo;
             <em>Journal of Healthcare Informatics Research</em>, 1-30.
-            <a href="https://link.springer.com/article/10.1007/s41666-025-00226-4" target="_blank" class="text-primary dark:text-blue-400 hover:underline">[DOI]</a>
-            <a href="https://arxiv.org/abs/2310.09650" target="_blank" class="text-primary dark:text-blue-400 hover:underline">[arXiv]</a>
+            <a href="https://link.springer.com/article/10.1007/s41666-025-00226-4" target="_blank" rel="noopener noreferrer" class="text-primary dark:text-blue-400 hover:underline">[DOI]</a>
+            <a href="https://arxiv.org/abs/2310.09650" target="_blank" rel="noopener noreferrer" class="text-primary dark:text-blue-400 hover:underline">[arXiv]</a>
           </p>
         </div>
       </div>

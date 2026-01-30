@@ -8,19 +8,19 @@ export const setupTeaching = (element: HTMLElement) => {
       </h2>
       <div class="space-y-6 font-serif text-slate-700 dark:text-slate-300">
         <div>
-          <h3 class="text-lg font-bold text-slate-900 dark:text-white">President, <a href="https://aiwvu.orgs.wvu.edu" target="_blank" class="text-primary dark:text-blue-400 hover:underline">AIWVU</a></h3>
+          <h3 class="text-lg font-bold text-slate-900 dark:text-white">President, <a href="https://aiwvu.orgs.wvu.edu" target="_blank" rel="noopener noreferrer" class="text-primary dark:text-blue-400 hover:underline">AIWVU</a></h3>
           <p class="text-sm text-slate-500 dark:text-slate-400 font-mono mb-1">Jan 2022 - May 2024</p>
-          <p class="text-sm leading-relaxed mt-1"><!-- TODO: Add description --> Grew organization to 200+ members. Mentored NASA Lunar Autonomy Challenge team to 5th place nationally among 31 university teams. Organized faculty research seminars and technical workshops on ML fundamentals.</p>
+          <p class="text-base leading-relaxed mt-1"><!-- TODO: Add description --> Grew organization to 200+ members. Mentored NASA Lunar Autonomy Challenge team to 5th place nationally among 31 university teams. Organized faculty research seminars and technical workshops on ML fundamentals.</p>
         </div>
         <div>
-          <h3 class="text-lg font-bold text-slate-900 dark:text-white">Tutor, <a href="https://lcsee.statler.wvu.edu/student-life/lcsee-learning-center" target="_blank" class="text-primary dark:text-blue-400 hover:underline">Lane Department of Computer Science and Electrical Engineering</a></h3>
+          <h3 class="text-lg font-bold text-slate-900 dark:text-white">Tutor, <a href="https://lcsee.statler.wvu.edu/student-life/lcsee-learning-center" target="_blank" rel="noopener noreferrer" class="text-primary dark:text-blue-400 hover:underline">Lane Department of Computer Science and Electrical Engineering</a></h3>
           <p class="text-sm text-slate-500 dark:text-slate-400 font-mono mb-1">Fall 2023 - Spring 2024</p>
-          <p class="text-sm leading-relaxed mt-1"><!-- TODO: Add description --> Tutored upper-division algorithms, operating systems, and computer architecture courses.</p>
+          <p class="text-base leading-relaxed mt-1"><!-- TODO: Add description --> Tutored upper-division algorithms, operating systems, and computer architecture courses.</p>
         </div>
         <div>
           <h3 class="text-lg font-bold text-slate-900 dark:text-white">Tutor, Engineering Learning Center</h3>
           <p class="text-sm text-slate-500 dark:text-slate-400 font-mono mb-1">Fall 2021 - Spring 2022</p>
-          <p class="text-sm leading-relaxed mt-1"><!-- TODO: Add description --> Supported 20+ students per day across calculus, physics, and introductory CS courses.</p>
+          <p class="text-base leading-relaxed mt-1"><!-- TODO: Add description --> Supported 20+ students per day across calculus, physics, and introductory CS courses.</p>
         </div>
       </div>
     </div>

@@ -19,8 +19,6 @@ import { setupProjects } from "./dev/Projects";
 import { setupContact } from "./dev/Contact";
 import "./style.css";
 
-document.documentElement.setAttribute("data-page", "dev");
-
 // Static developer-controlled template — safe innerHTML usage per CLAUDE.md
 document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
   <div class="min-h-screen bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-mono selection:bg-primary selection:text-white">
@@ -58,4 +56,6 @@ setupHero(heroSection);
 setupAbout(aboutSection);
 setupProjects(projectsSection);
 setupContact(contactSection);
-setupFooter(document.querySelector<HTMLElement>("#footer")!, {});
+setupFooter(document.querySelector<HTMLElement>("#footer")!, {
+  crossPageLink: { label: "Research", href: "/" },
+});

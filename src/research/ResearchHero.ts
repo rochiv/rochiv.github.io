@@ -16,11 +16,11 @@ export const setupResearchHero = (element: HTMLElement) => {
       <div class="flex flex-wrap gap-4 text-sm font-mono">
         <a href="mailto:rohitchivukula@proton.me" class="text-primary dark:text-blue-400 hover:underline">Email</a>
         <span class="text-slate-300 dark:text-slate-600">|</span>
-        <a href="https://github.com/rochiv" target="_blank" class="text-primary dark:text-blue-400 hover:underline">GitHub</a>
+        <a href="https://github.com/rochiv" target="_blank" rel="noopener noreferrer" class="text-primary dark:text-blue-400 hover:underline">GitHub</a>
         <span class="text-slate-300 dark:text-slate-600">|</span>
-        <a href="https://linkedin.com/in/rohit-chivukula" target="_blank" class="text-primary dark:text-blue-400 hover:underline">LinkedIn</a>
+        <a href="https://linkedin.com/in/rohit-chivukula" target="_blank" rel="noopener noreferrer" class="text-primary dark:text-blue-400 hover:underline">LinkedIn</a>
         <span class="text-slate-300 dark:text-slate-600">|</span>
-        <a href="https://scholar.google.com/citations?user=15MoBjEAAAAJ&hl=en" target="_blank" class="text-primary dark:text-blue-400 hover:underline">Google Scholar</a>
+        <a href="https://scholar.google.com/citations?user=15MoBjEAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" class="text-primary dark:text-blue-400 hover:underline">Google Scholar</a>
         <span class="text-slate-300 dark:text-slate-600">|</span>
         <a href="./dev/" class="text-primary dark:text-blue-400 hover:underline">Portfolio</a>
       </div>

@@ -7,9 +7,6 @@ export default {
       fontFamily: {
         serif: ["Fraunces", "serif"],
         mono: ["Space Mono", "monospace"],
-        sans: ["Fraunces", "serif"],
-        "serif-research": ["Spectral", "Georgia", "serif"],
-        "mono-research": ["JetBrains Mono", "monospace"],
       },
       colors: {
         primary: {
@@ -22,14 +19,6 @@ export default {
         background: {
           light: "#fdfbf7",
           dark: "#0f172a",
-        },
-        research: {
-          accent: "#2C5F87",
-          "accent-dark": "#1E4263",
-          secondary: "#8B6914",
-          "secondary-dark": "#6B5010",
-          "bg-light": "#FAFAF8",
-          "bg-dark": "#111318",
         },
       },
       animation: {

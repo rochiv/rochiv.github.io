@@ -48,7 +48,7 @@ export const setupHeader = (element: HTMLElement, config: HeaderConfig) => {
             </a>
           </div>
 
-          <div class="hidden md:flex space-x-4 lg:space-x-8 items-center flex-shrink-0 font-serif font-bold text-base lg:text-lg">
+          <div class="hidden md:flex space-x-4 lg:space-x-8 items-center flex-shrink-0 font-serif font-semibold text-base lg:text-lg">
             ${navLinks}
             ${ctaHtml}
             <button id="theme-toggle" class="relative w-14 h-7 bg-slate-300 dark:bg-primary rounded-full transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2" aria-label="Toggle Dark Mode">
@@ -67,7 +67,7 @@ export const setupHeader = (element: HTMLElement, config: HeaderConfig) => {
       </div>
 
       <div id="mobile-menu" class="hidden md:hidden bg-background-light dark:bg-background-dark border-t border-slate-100 dark:border-slate-800 shadow-lg">
-        <div class="px-6 pt-6 pb-8 space-y-4 font-serif text-xl font-bold text-center">
+        <div class="px-6 pt-6 pb-8 space-y-4 font-serif text-lg font-semibold text-center">
           ${mobileNavLinks}
           ${mobileCta}
           <div class="flex items-center justify-center gap-3 py-3">
@@ -83,16 +83,12 @@ export const setupHeader = (element: HTMLElement, config: HeaderConfig) => {
 
   initTheme();
 
-  const handleToggle = () => {
-    toggleTheme();
-  };
-
   element
     .querySelector("#theme-toggle")
-    ?.addEventListener("click", handleToggle);
+    ?.addEventListener("click", toggleTheme);
   element
     .querySelector("#mobile-theme-toggle")
-    ?.addEventListener("click", handleToggle);
+    ?.addEventListener("click", toggleTheme);
   element.querySelector("#mobile-menu-btn")?.addEventListener("click", () => {
     element.querySelector("#mobile-menu")?.classList.toggle("hidden");
   });
