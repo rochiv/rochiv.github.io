@@ -1,0 +1,76 @@
+@font-face {
+  font-family: "Fraunces";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("fonts/fraunces-roman.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Fraunces";
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("fonts/fraunces-italic.woff2") format("woff2");
+}
+
+:root {
+  --bg: #efe7d4;
+  --text: #1f1b16;
+  --link: #6b3410;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1f1b16;
+    --text: #efe7d4;
+    --link: #d4a574;
+  }
+}
+
+:root[data-theme="light"] {
+  --bg: #efe7d4;
+  --text: #1f1b16;
+  --link: #6b3410;
+}
+
+:root[data-theme="dark"] {
+  --bg: #1f1b16;
+  --text: #efe7d4;
+  --link: #d4a574;
+}
+
+a {
+  color: var(--link);
+  text-underline-offset: 0.2em;
+}
+
+#theme-toggle {
+  position: fixed;
+  top: 1.25rem;
+  right: 1.25rem;
+  background: none;
+  border: none;
+  color: var(--text);
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-style: italic;
+  cursor: pointer;
+  opacity: 0.55;
+  padding: 0.25rem 0.5rem;
+}
+
+#theme-toggle:hover {
+  opacity: 1;
+}
+
+body {
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text);
+  background-color: var(--bg);
+  max-width: 42rem;
+  margin: 3rem auto;
+  padding: 0 1.25rem;
+}
